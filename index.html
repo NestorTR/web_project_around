@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Around the U.S.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Around the U.S." />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header__logo">
+          <img
+            src="./images/AroundTheUS.png"
+            alt="Logo Around The US'"
+            class="header__logo"
+          />
+        </div>
+        <hr class="header__line" />
+      </header>
+      <section class="profile">
+        <img
+          src="./images/Jacques.jpg"
+          alt="Foto de perfil"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h2 class="profile__name">Jacques Cousteau</h2>
+          <h3 class="profile__job">Explorador</h3>
+          <button class="profile__edit-button"></button>
+        </div>
+        <button class="profile__add-button"></button>
+      </section>
+      <main class="elements">
+        <section class="elements__container">
+          <figure class="elements__item">
+            <img
+              src="./images/ImagenUno.jpg"
+              alt="Paisaje 1"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Austria</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/Like.png"
+                  alt="Boton like"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/ImagenDos.jpg"
+              alt="Paisaje 2"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Noruega</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/Like.png"
+                  alt="Boton like"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/ImagenTres.jpg"
+              alt="Paisaje 3"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Arabia</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/Like.png"
+                  alt="Boton like"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/ImagenCuatro.jpg"
+              alt="Paisaje 4"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Suiza</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/Like.png"
+                  alt="Boton like"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/ImagenCinco.jpg"
+              alt="Paisaje 5"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Tahití</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/Like.png"
+                  alt="Boton like"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/ImagenSeis.jpg"
+              alt="Paisaje 6"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Canadá</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/Like.png"
+                  alt="Boton like"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+        </section>
+        <section class="popup">
+          <div class="popup__container">
+            <button class="popup__close">
+              <img src="../web_project_around/images/Cerrar.png" />
+            </button>
+            <div class="popup__card">
+              <h3 class="popup__title">Editar perfil</h3>
+              <form class="popup__input">
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  class="popup__text popup__text_title"
+                />
+                <input
+                  type="text"
+                  placeholder="Acerca de mí"
+                  class="popup__text popup__text_about"
+                />
+                <button class="popup__submit-btn popup__submit-btn_action_add">
+                  Guardar
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="popup__overlay"></div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&#169; 2024. Nestor Torres</p>
+      </footer>
+    </div>
+    <script src="./javascript/script.js"></script>
+  </body>
+</html>
