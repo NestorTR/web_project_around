@@ -1,5 +1,5 @@
 let popupProfile = document.querySelector(".popup");
-let profileEditButton = document.querySelector(".profile__edit-button");
+let profileEditButton = document.querySelector(".profile__button-icon");
 let profileNameNode = document.querySelector(".profile__name");
 let profileAboutNode = document.querySelector(".profile__job");
 let formProfile = document.querySelector(".popup__input");

@@ -1,27 +1,46 @@
 .elements {
-  width: 100%;
+  background-color: #000000;
+  max-width: 880px;
+  margin: 0 auto 0 auto;
+  font-family: "inter", sans-serif;
 }
 .elements__container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px;
-  margin: 0px;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  background-color: #000000;
+  margin: 0 auto 0 auto;
+  font-family: "Inter", sans-serif;
+  width: 880px;
+  height: 743px;
+  top: 329px;
+  left: 200px;
+  border-radius: 10px 10px 0px 0px;
+  opacity: 0px;
 }
+
 .elements__item {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background-color: white;
-  border-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f7f7;
+  color: #000000;
   border-radius: 10px;
-  margin: 0;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  flex-direction: column;
+  max-width: 282px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .elements__image {
   width: 282px;
   height: 282px;
-  object-fit: fill;
+  background-size: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .elements__description {
@@ -30,40 +49,41 @@
   align-items: center;
   justify-content: space-between;
   margin: auto 5%;
+  width: 246px;
+  height: 23px;
+  top: 636px;
+  left: 520px;
+  gap: 0px;
+  opacity: 0px;
 }
 
 .elements__description-title {
-  font-size: 24px;
-  font-weight: 900;
-  text-align: left;
-  color: black;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.elements__description-like {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  box-sizing: border-box;
-  margin: 1px;
+.elements__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-.elements__description-like:hover {
+.elements__button-like:hover {
   opacity: 50%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 880px) {
   .elements__container {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
   }
 }
-@media screen and (max-width: 320px) {
-  .elements {
-    width: 90%;
-    margin: 0 auto;
-  }
+@media screen and (max-width: 590px) {
   .elements__container {
-    grid-template-columns: 1fr;
-    grid-template-rows: max-content;
+    grid-template-columns: repeat(1, 1fr);
   }
 }

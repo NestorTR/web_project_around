@@ -1,14 +1,18 @@
 .footer__copyright {
+  display: flex;
   font-family: "Inter", sans-serif;
   font-size: 18px;
   text-align: left;
   color: #545454;
-  margin: 10% auto;
-  width: 100%;
-
+  margin: 67px auto 60px auto;
   font-weight: 400;
   line-height: 21.78px;
-  text-align: left;
+  width: 318px;
+  height: 18px;
+  top: 1139px;
+  left: 200px;
+  gap: 0px;
+  opacity: 0px;
 }
 
 @media screen and (max-width: 320px) {

@@ -15,27 +15,38 @@
           <img
             src="./images/AroundTheUS.png"
             alt="Logo Around The US'"
-            class="header__logo"
+            class="header__logo-image"
           />
         </div>
-        <hr class="header__line" />
       </header>
       <section class="profile">
-        <img
-          src="./images/Jacques.jpg"
-          alt="Foto de perfil"
-          class="profile__avatar"
-        />
-        <div class="profile__info">
-          <h2 class="profile__name">Jacques Cousteau</h2>
-          <h3 class="profile__job">Explorador</h3>
-          <button class="profile__edit-button"></button>
+        <div class="profile__column-left">
+          <img
+            src="./images/Jacques.jpg"
+            alt="Imagen de perfil"
+            class="profile__avatar"
+          />
+          <div class="profile__info">
+            <div class="profile__name-content">
+              <h3 class="profile__name">Jacques Cousteau</h3>
+              <button>
+                <img
+                  src="./images/Editar.png"
+                  alt="Boton editar"
+                  class="profile__button-icon"
+                />
+              </button>
+            </div>
+            <p class="profile__job">Explorador</p>
+          </div>
         </div>
-        <button class="profile__add-button"></button>
+        <div class="profile__column-right">
+          <button class="profile__button-add">+</button>
+        </div>
       </section>
       <main class="elements">
         <section class="elements__container">
-          <figure class="elements__item">
+          <div class="elements__item">
             <img
               src="./images/ImagenUno.jpg"
               alt="Paisaje 1"
@@ -43,16 +54,16 @@
             />
             <div class="elements__description">
               <p class="elements__description-title">Austria</p>
-              <div class="elements__description-like">
+              <button class="elements__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__description-like"
+                  class="elements__button-like"
                 />
-              </div>
+              </button>
             </div>
-          </figure>
-          <figure class="elements__item">
+          </div>
+          <div class="elements__item">
             <img
               src="./images/ImagenDos.jpg"
               alt="Paisaje 2"
@@ -60,16 +71,16 @@
             />
             <div class="elements__description">
               <p class="elements__description-title">Noruega</p>
-              <div class="elements__description-like">
+              <div class="elements__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__description-like"
+                  class="elements__button-like"
                 />
               </div>
             </div>
-          </figure>
-          <figure class="elements__item">
+          </div>
+          <div class="elements__item">
             <img
               src="./images/ImagenTres.jpg"
               alt="Paisaje 3"
@@ -77,16 +88,16 @@
             />
             <div class="elements__description">
               <p class="elements__description-title">Arabia</p>
-              <div class="elements__description-like">
+              <div class="elements__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__description-like"
+                  class="elements__button-like"
                 />
               </div>
             </div>
-          </figure>
-          <figure class="elements__item">
+          </div>
+          <div class="elements__item">
             <img
               src="./images/ImagenCuatro.jpg"
               alt="Paisaje 4"
@@ -94,16 +105,16 @@
             />
             <div class="elements__description">
               <p class="elements__description-title">Suiza</p>
-              <div class="elements__description-like">
+              <div class="elements__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__description-like"
+                  class="elements__button-like"
                 />
               </div>
             </div>
-          </figure>
-          <figure class="elements__item">
+          </div>
+          <div class="elements__item">
             <img
               src="./images/ImagenCinco.jpg"
               alt="Paisaje 5"
@@ -111,16 +122,16 @@
             />
             <div class="elements__description">
               <p class="elements__description-title">Tahití</p>
-              <div class="elements__description-like">
+              <div class="elements__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__description-like"
+                  class="elements__button-like"
                 />
               </div>
             </div>
-          </figure>
-          <figure class="elements__item">
+          </div>
+          <div class="elements__item">
             <img
               src="./images/ImagenSeis.jpg"
               alt="Paisaje 6"
@@ -128,20 +139,24 @@
             />
             <div class="elements__description">
               <p class="elements__description-title">Canadá</p>
-              <div class="elements__description-like">
+              <div class="elements__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__description-like"
+                  class="elements__button-like"
                 />
               </div>
             </div>
-          </figure>
+          </div>
         </section>
         <section class="popup">
           <div class="popup__container">
             <button class="popup__close">
-              <img src="../web_project_around/images/Cerrar.png" />
+              <img
+                src="./images/Cerrar.png"
+                alt="Cerrar"
+                class="popup__close-button"
+              />
             </button>
             <div class="popup__card">
               <h3 class="popup__title">Editar perfil</h3>
