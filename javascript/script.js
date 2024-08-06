@@ -1,18 +1,20 @@
-let popupProfile = document.querySelector(".popup");
-let profileEditButton = document.querySelector(".profile__button-icon");
-let profileNameNode = document.querySelector(".profile__name");
-let profileAboutNode = document.querySelector(".profile__job");
-let formProfile = document.querySelector(".popup__input");
-let inputNameNode = formProfile.querySelector(".popup__text_title");
-let inputAboutNode = formProfile.querySelector(".popup__text_about");
-let closeProfilePopupButton = popupProfile.querySelector(".popup__close");
-let popupSaveButton = formProfile.querySelector(".popup__submit-btn");
+let editDialog = document.querySelector("#edit");
+let profileEditButton = document.querySelector("#edit-button");
+let closeDialogButton = document.querySelector(".profile__close-button");
+let profileNameNode = document.querySelector("#profile-name");
+let profileAboutNode = document.querySelector("#profile-job");
+let inputNameNode = document.querySelector("#name");
+let inputAboutNode = document.querySelector("#job");
+let formProfile = document.querySelector("#profile-form");
 
 profileEditButton.addEventListener("click", function () {
-  popupProfile.classList.add("active");
   inputNameNode.value = profileNameNode.textContent;
   inputAboutNode.value = profileAboutNode.textContent;
-  popupSaveButton.classList.remove("active");
+  editDialog.showModal();
+});
+
+closeDialogButton.addEventListener("click", function () {
+  editDialog.close();
 });
 
 formProfile.addEventListener("submit", function (event) {
@@ -20,12 +22,6 @@ formProfile.addEventListener("submit", function (event) {
   if (inputNameNode.value !== "" && inputAboutNode.value !== "") {
     profileNameNode.textContent = inputNameNode.value;
     profileAboutNode.textContent = inputAboutNode.value;
-    popupSaveButton.classList.add("active");
-    popupProfile.classList.remove("active");
+    editDialog.close();
   }
-});
-
-closeProfilePopupButton.addEventListener("click", function () {
-  popupProfile.classList.remove("active");
-  popupSaveButton.classList.remove("active");
 });

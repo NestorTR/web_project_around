@@ -1,33 +1,16 @@
 .header {
   display: flex;
+  max-width: 880px;
+  width: 100%;
   margin: 0;
-  padding-top: 41px;
-  padding-bottom: 0;
+  padding-bottom: 41px;
   border-bottom: 1px solid #545454;
-  width: 880px;
-  height: 74px;
-  top: 45px;
-  left: 200px;
-  gap: 0px;
-  border: 1px 0px 0px 0px;
-  opacity: 0px;
 }
 
 .header__logo {
   display: block;
   max-width: 173px;
   width: 100%;
-  margin: 0;
-}
-
-.header__logo-image {
-  margin: 0;
-  width: 173px;
-  height: 33px;
-  top: 45px;
-  left: 200px;
-  gap: 0px;
-  opacity: 0px;
 }
 
 @media screen and (max-width: 880px) {

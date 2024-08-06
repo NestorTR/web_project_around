@@ -1,22 +1,10 @@
-.footer__copyright {
+.footer {
   display: flex;
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
-  text-align: left;
-  color: #545454;
+  font-family: "inter", sans-serif;
+  max-width: 880px;
   margin: 67px auto 60px auto;
+  color: #545454;
   font-weight: 400;
+  font-size: 18px;
   line-height: 21.78px;
-  width: 318px;
-  height: 18px;
-  top: 1139px;
-  left: 200px;
-  gap: 0px;
-  opacity: 0px;
-}
-
-@media screen and (max-width: 320px) {
-  .footer__copyright {
-    width: 90%;
-  }
 }

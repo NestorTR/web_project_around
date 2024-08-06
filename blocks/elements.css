@@ -1,70 +1,47 @@
 .elements {
+  display: grid;
   background-color: #000000;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 20px;
+  grid-column-gap: 17px;
   max-width: 880px;
   margin: 0 auto 0 auto;
   font-family: "inter", sans-serif;
 }
-.elements__container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
-  background-color: #000000;
-  margin: 0 auto 0 auto;
-  font-family: "Inter", sans-serif;
-  width: 880px;
-  height: 743px;
+
+.element {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  max-width: 282px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.element__image {
+  width: 282px;
+  height: 282px;
   top: 329px;
-  left: 200px;
+  left: 781px;
+  gap: 0px;
   border-radius: 10px 10px 0px 0px;
   opacity: 0px;
 }
 
-.elements__item {
+.element__description {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 25px 0 25px;
   background-color: #f7f7f7;
   color: #000000;
   border-radius: 10px;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
-  flex-direction: column;
-  max-width: 282px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.elements__image {
-  width: 282px;
-  height: 282px;
-  background-size: cover;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.elements__description {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: auto 5%;
-  width: 246px;
-  height: 23px;
-  top: 636px;
-  left: 520px;
-  gap: 0px;
-  opacity: 0px;
-}
-
-.elements__description-title {
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.elements__button {
+.element__button {
   background: none;
   border: none;
   cursor: pointer;
@@ -73,17 +50,17 @@
   align-items: center;
 }
 
-.elements__button-like:hover {
-  opacity: 50%;
+.element__button:hover {
+  opacity: 65%;
 }
 
 @media screen and (max-width: 880px) {
-  .elements__container {
+  .elements {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 590px) {
-  .elements__container {
+  .elements {
     grid-template-columns: repeat(1, 1fr);
   }
 }

@@ -11,179 +11,164 @@
   <body>
     <div class="page">
       <header class="header">
-        <div class="header__logo">
-          <img
-            src="./images/AroundTheUS.png"
-            alt="Logo Around The US'"
-            class="header__logo-image"
-          />
-        </div>
+        <img
+          src="./images/AroundTheUS.png"
+          alt="Logo Around the U.S."
+          class="header__logo"
+        />
       </header>
-      <section class="profile">
-        <div class="profile__column-left">
+      <main class="content">
+        <section class="profile" id="profile">
           <img
             src="./images/Jacques.jpg"
-            alt="Imagen de perfil"
+            alt="Imagen de perfil."
             class="profile__avatar"
           />
           <div class="profile__info">
-            <div class="profile__name-content">
-              <h3 class="profile__name">Jacques Cousteau</h3>
-              <button>
-                <img
-                  src="./images/Editar.png"
-                  alt="Boton editar"
-                  class="profile__button-icon"
-                />
-              </button>
-            </div>
-            <p class="profile__job">Explorador</p>
+            <h2 class="profile__name" id="profile-name">Jacques Cousteau</h2>
+            <h3 class="profile__job" id="profile-job">Explorador</h3>
+            <button id="edit-button" class="profile__edit-button">
+              <img src="./images/Editar.png" alt=" Boton editar" />
+            </button>
           </div>
-        </div>
-        <div class="profile__column-right">
-          <button class="profile__button-add">+</button>
-        </div>
-      </section>
-      <main class="elements">
-        <section class="elements__container">
-          <div class="elements__item">
+          <button class="profile__add-button">+</button>
+        </section>
+        <dialog id="edit">
+          <button class="profile__close-button">
+            <img src="./images/Cerrar.png" alt="Cerrar" />
+          </button>
+          <form class="profile__edit-form" id="profile-form">
+            <header class="profile__edit-form-header">Editar Perfil</header>
+            <input
+              type="text"
+              class="profile__edit-form-input profile__edit-form-input_name"
+              placeholder="Nombre"
+              id="name"
+            />
+            <input
+              type="text"
+              class="profile__edit-form-input profile__edit-form-input_job"
+              placeholder="Acerca de mí"
+              id="job"
+            />
+            <button
+              id="save-button"
+              class="profile__edit-form-button profile__edit-form-button_save"
+            >
+              Guardar
+            </button>
+          </form>
+        </dialog>
+
+        <section class="elements">
+          <div class="element">
             <img
               src="./images/ImagenUno.jpg"
               alt="Paisaje 1"
-              class="elements__image"
+              class="element__image"
             />
-            <div class="elements__description">
-              <p class="elements__description-title">Austria</p>
-              <button class="elements__button">
+            <div class="element__description">
+              <p>Austria</p>
+              <button class="element__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__button-like"
+                  id="like-button"
                 />
               </button>
             </div>
           </div>
-          <div class="elements__item">
+          <div class="element">
             <img
               src="./images/ImagenDos.jpg"
               alt="Paisaje 2"
-              class="elements__image"
+              class="element__image"
             />
-            <div class="elements__description">
-              <p class="elements__description-title">Noruega</p>
-              <div class="elements__button">
+            <div class="element__description">
+              <p>Noruega</p>
+              <button class="element__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__button-like"
+                  id="like-button"
                 />
-              </div>
+              </button>
             </div>
           </div>
-          <div class="elements__item">
+          <div class="element">
             <img
               src="./images/ImagenTres.jpg"
               alt="Paisaje 3"
-              class="elements__image"
+              class="element__image"
             />
-            <div class="elements__description">
-              <p class="elements__description-title">Arabia</p>
-              <div class="elements__button">
+            <div class="element__description">
+              <p>Arabia</p>
+              <button class="element__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__button-like"
+                  id="like-button"
                 />
-              </div>
+              </button>
             </div>
           </div>
-          <div class="elements__item">
+          <div class="element">
             <img
               src="./images/ImagenCuatro.jpg"
               alt="Paisaje 4"
-              class="elements__image"
+              class="element__image"
             />
-            <div class="elements__description">
-              <p class="elements__description-title">Suiza</p>
-              <div class="elements__button">
+            <div class="element__description">
+              <p>Suiza</p>
+              <button class="element__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__button-like"
+                  id="like-button"
                 />
-              </div>
+              </button>
             </div>
           </div>
-          <div class="elements__item">
+          <div class="element">
             <img
               src="./images/ImagenCinco.jpg"
               alt="Paisaje 5"
-              class="elements__image"
+              class="element__image"
             />
-            <div class="elements__description">
-              <p class="elements__description-title">Tahití</p>
-              <div class="elements__button">
+            <div class="element__description">
+              <p>Tahití</p>
+              <button class="element__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__button-like"
+                  id="like-button"
                 />
-              </div>
+              </button>
             </div>
           </div>
-          <div class="elements__item">
+          <div class="element">
             <img
               src="./images/ImagenSeis.jpg"
               alt="Paisaje 6"
-              class="elements__image"
+              class="element__image"
             />
-            <div class="elements__description">
-              <p class="elements__description-title">Canadá</p>
-              <div class="elements__button">
+            <div class="element__description">
+              <p>Canadá</p>
+              <button class="element__button">
                 <img
                   src="./images/Like.png"
                   alt="Boton like"
-                  class="elements__button-like"
+                  id="like-button"
                 />
-              </div>
+              </button>
             </div>
           </div>
         </section>
-        <section class="popup">
-          <div class="popup__container">
-            <button class="popup__close">
-              <img
-                src="./images/Cerrar.png"
-                alt="Cerrar"
-                class="popup__close-button"
-              />
-            </button>
-            <div class="popup__card">
-              <h3 class="popup__title">Editar perfil</h3>
-              <form class="popup__input">
-                <input
-                  type="text"
-                  placeholder="Nombre"
-                  class="popup__text popup__text_title"
-                />
-                <input
-                  type="text"
-                  placeholder="Acerca de mí"
-                  class="popup__text popup__text_about"
-                />
-                <button class="popup__submit-btn popup__submit-btn_action_add">
-                  Guardar
-                </button>
-              </form>
-            </div>
-          </div>
-          <div class="popup__overlay"></div>
-        </section>
+        <footer>
+          <p class="footer">&#169; 2024. Nestor Torres</p>
+        </footer>
       </main>
-      <footer class="footer">
-        <p class="footer__copyright">&#169; 2024. Nestor Torres</p>
-      </footer>
     </div>
-    <script src="./javascript/script.js"></script>
   </body>
+  <script src="./javascript/script.js"></script>
 </html>
