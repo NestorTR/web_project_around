@@ -27,7 +27,7 @@
           <div class="profile__info">
             <h2 class="profile__name" id="profile-name">Jacques Cousteau</h2>
             <h3 class="profile__job" id="profile-job">Explorador</h3>
-            <button id="edit-button" class="profile__edit-button">
+            <button id="edit-button-open" class="profile__edit-button">
               <img src="./images/Editar.png" alt=" Boton editar" />
             </button>
           </div>
@@ -35,7 +35,12 @@
         </section>
         <dialog id="edit">
           <button class="profile__close-button">
-            <img src="./images/Cerrar.png" alt="Cerrar" />
+            <img
+              src="./images/CloseIcon.svg"
+              alt="Cerrar"
+              id="edit-button-close"
+              class="profile__close-icon"
+            />
           </button>
           <form class="profile__edit-form" id="profile-form">
             <header class="profile__edit-form-header">Editar Perfil</header>
@@ -59,7 +64,6 @@
             </button>
           </form>
         </dialog>
-
         <section class="elements">
           <div class="element">
             <img
@@ -70,11 +74,7 @@
             <div class="element__description">
               <p>Austria</p>
               <button class="element__button">
-                <img
-                  src="./images/Like.png"
-                  alt="Boton like"
-                  id="like-button"
-                />
+                <img src="./images/Like.png" alt="Like button" id="heart-off" />
               </button>
             </div>
           </div>
@@ -89,8 +89,8 @@
               <button class="element__button">
                 <img
                   src="./images/Like.png"
-                  alt="Boton like"
-                  id="like-button"
+                  alt="Like button"
+                  id="heart-off-2"
                 />
               </button>
             </div>
@@ -106,8 +106,8 @@
               <button class="element__button">
                 <img
                   src="./images/Like.png"
-                  alt="Boton like"
-                  id="like-button"
+                  alt="Like button"
+                  id="heart-off-3"
                 />
               </button>
             </div>
@@ -123,8 +123,8 @@
               <button class="element__button">
                 <img
                   src="./images/Like.png"
-                  alt="Boton like"
-                  id="like-button"
+                  alt="Like button"
+                  id="heart-off-4"
                 />
               </button>
             </div>
@@ -140,8 +140,8 @@
               <button class="element__button">
                 <img
                   src="./images/Like.png"
-                  alt="Boton like"
-                  id="like-button"
+                  alt="Like button"
+                  id="heart-off-5"
                 />
               </button>
             </div>
@@ -157,8 +157,8 @@
               <button class="element__button">
                 <img
                   src="./images/Like.png"
-                  alt="Boton like"
-                  id="like-button"
+                  alt="Like button"
+                  id="heart-off-6"
                 />
               </button>
             </div>
