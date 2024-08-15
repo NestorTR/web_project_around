@@ -2,7 +2,7 @@
 
 # DESCRIPCIÓN DEL PROYECTO
 
-- Consiste en una página donde se pueden publicar fotografías de paisajes del mundo, en la cual se puede dar "Me gusta" a cada una.
+- Consiste en una página donde se pueden publicar fotografías de paisajes del mundo, en la cual se puede dar "Me gusta", borrar y agregar nuevas fotos.
 
 # TECNOLOGIAS UTILIZADAS
 
