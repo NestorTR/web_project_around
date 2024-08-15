@@ -1,9 +1,9 @@
 // Selectores para el diálogo 'edit'
-let editButtonOpen = document.querySelector("#edit-button-open");
-let editButtonClose = document.querySelector("#edit-button-close");
-let profileEdit = document.querySelector("#edit");
-let profileNameElement = document.getElementById("profile-name");
-let profileJobElement = document.getElementById("profile-job");
+const editButtonOpen = document.querySelector("#edit-button-open");
+const editButtonClose = document.querySelector("#edit-button-close");
+const profileEdit = document.querySelector("#edit");
+const profileNameElement = document.getElementById("profile-name");
+const profileJobElement = document.getElementById("profile-job");
 
 editButtonOpen.addEventListener("click", () => {
   inputFieldName.value = profileNameElement.textContent;
@@ -214,5 +214,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   closeButton.addEventListener("click", function () {
     imagePopup.close();
+    popupImage.src = "";
+    popupDescription.textContent = "";
   });
+});
+
+const closeButton = document.getElementById("closeButton");
+
+imagePopup.addEventListener("close", function () {
+  closeButton.style.display = "none";
+});
+
+imagePopup.addEventListener("show", function () {
+  closeButton.style.display = "block";
 });
