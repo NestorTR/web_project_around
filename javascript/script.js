@@ -1,3 +1,4 @@
+// Selectores para el diálogo 'edit'
 let editButtonOpen = document.querySelector("#edit-button-open");
 let editButtonClose = document.querySelector("#edit-button-close");
 let profileEdit = document.querySelector("#edit");
@@ -65,3 +66,153 @@ function handleProfileFormSubmit(evt) {
 }
 
 formElement.addEventListener("submit", handleProfileFormSubmit);
+
+// Botón Like
+
+document.querySelectorAll(".element__button").forEach((button) => {
+  button.addEventListener("click", function () {
+    const img = this.querySelector("img");
+
+    if (img.src.includes("LikeOn.png")) {
+      img.src = "./images/Like.png";
+    } else {
+      img.src = "./images/LikeOn.png";
+    }
+  });
+});
+
+// Botón agregar
+
+let addButtonOpen = document.querySelector(".profile__add-button");
+let addDialog = document.querySelector("#add");
+
+addButtonOpen.addEventListener("click", () => {
+  addDialog.show();
+  document.querySelector(".header").style.opacity = "0.5";
+  document.querySelector(".profile").style.opacity = "0.5";
+  document.querySelector(".elements").style.opacity = "0.5";
+  document.querySelector(".footer").style.opacity = "0.5";
+});
+
+let addButtonClose = document.querySelector("#add-button-close");
+
+addButtonClose.addEventListener("click", () => {
+  addDialog.close();
+  document.querySelector(".header").style.opacity = "1";
+  document.querySelector(".profile").style.opacity = "1";
+  document.querySelector(".elements").style.opacity = "1";
+  document.querySelector(".footer").style.opacity = "1";
+});
+
+let inputFieldPlace = document.querySelector(".profile__add-form-input_place");
+let inputFieldUrl = document.querySelector(".profile__add-form-input_url");
+let addSaveButton = addDialog.querySelector(".profile__add-form-button_save");
+
+function toggleAddSaveButton() {
+  if (
+    inputFieldPlace.value.trim() !== "" &&
+    inputFieldUrl.value.trim() !== ""
+  ) {
+    addSaveButton.style.backgroundColor = "black";
+    addSaveButton.style.color = "white";
+  } else {
+    addSaveButton.style.backgroundColor = "transparent";
+    addSaveButton.style.color = "#c4c4c4";
+  }
+}
+
+inputFieldPlace.addEventListener("input", toggleAddSaveButton);
+inputFieldUrl.addEventListener("input", toggleAddSaveButton);
+toggleAddSaveButton();
+
+// Botón de eliminar tarjetas
+
+let deleteButtons = document.querySelectorAll(".element__delete");
+
+deleteButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    let element = button.closest(".element");
+    element.remove();
+  });
+});
+
+// Botón agregar
+
+let elementsContainer = document.querySelector(".elements");
+let addForm = document.querySelector("#add-form");
+
+// Función para manejar la adición de una nueva tarjeta
+function handleAddFormSubmit(evt) {
+  evt.preventDefault();
+
+  let placeValue = inputFieldPlace.value.trim();
+  let urlValue = inputFieldUrl.value.trim();
+
+  // Esto creará una nueva tarjeta element
+  let newElement = document.createElement("div");
+  newElement.classList.add("element");
+
+  // Codigo para la nueva tarjeta que será agregada *No se muestra la imagen aaaaaaaaaaaaaaaahhhhh*
+
+  newElement.innerHTML = `
+    <button class="element__delete">
+      <img src="./images/eliminar.png" alt="Eliminar" />
+    </button>
+    <img src="${urlValue}" alt="${placeValue}" class="element__image" />
+    <div class="element__description">
+      <p>${placeValue}</p>
+      <button class="element__button">
+        <img src="./images/Like.png" alt="Like button" />
+      </button>
+    </div>
+  `;
+
+  // Pondrá el nuevo elemento al principio
+  elementsContainer.insertBefore(newElement, elementsContainer.firstChild);
+
+  // Esto gregara el botón eliminar en la nueva tarjeta
+  newElement.querySelector(".element__delete").addEventListener("click", () => {
+    newElement.remove();
+  });
+
+  addDialog.close();
+  addForm.reset();
+  toggleAddSaveButton();
+
+  document.querySelector(".header").style.opacity = "1";
+  document.querySelector(".profile").style.opacity = "1";
+  document.querySelector(".elements").style.opacity = "1";
+  document.querySelector(".footer").style.opacity = "1";
+}
+
+addForm.addEventListener("submit", handleAddFormSubmit);
+
+// Abrir imagen *Aún faltan detalles :( *
+
+// Si alguien lee este comentario HELP, el diseño en Figma es el mismo del Sprint pasado
+// por lo que solo me guio con lo que se aprecia en la descripcion del proyecto en la pagina del Bootcamp
+// que por cierto se traba mucho, supongo que es por los videos que están insertados.
+
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".element__image");
+  const imagePopup = document.getElementById("image-popup");
+  const popupImage = document.querySelector(".image-popup__image");
+  const popupDescription = document.querySelector(".image-popup__description");
+  const closeButton = document.getElementById("image-popup-close");
+
+  images.forEach(function (image) {
+    image.addEventListener("click", function () {
+      popupImage.src = this.src;
+      popupImage.alt = this.alt;
+      const description = this.closest(".element").querySelector(
+        ".element__description p"
+      ).textContent;
+      popupDescription.textContent = description;
+      imagePopup.showModal();
+    });
+  });
+
+  closeButton.addEventListener("click", function () {
+    imagePopup.close();
+  });
+});

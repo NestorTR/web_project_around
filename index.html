@@ -17,6 +17,7 @@
           class="header__logo"
         />
       </header>
+
       <main class="content">
         <section class="profile" id="profile">
           <img
@@ -31,7 +32,9 @@
               <img src="./images/Editar.png" alt=" Boton editar" />
             </button>
           </div>
-          <button class="profile__add-button">+</button>
+          <button class="profile__add-button">
+            <img src="./images/Agregar.png" alt="Agregar" />
+          </button>
         </section>
         <dialog id="edit">
           <button class="profile__close-button">
@@ -64,13 +67,50 @@
             </button>
           </form>
         </dialog>
+
+        <dialog id="add">
+          <button class="profile__close-button">
+            <img
+              src="./images/CloseIcon.svg"
+              alt="Cerrar"
+              id="add-button-close"
+              class="add__close-icon"
+            />
+          </button>
+          <form class="profile__add-form" id="add-form">
+            <header class="profile__add-form-header">Nuevo lugar</header>
+            <input
+              type="text"
+              class="profile__add-form-input profile__add-form-input_place"
+              placeholder="Lugar"
+              id="place"
+            />
+            <input
+              type="text"
+              class="profile__add-form-input profile__add-form-input_url"
+              placeholder="URL"
+              id="url"
+            />
+            <button
+              id="save-button"
+              class="profile__add-form-button profile__add-form-button_save"
+            >
+              Guardar
+            </button>
+          </form>
+        </dialog>
+
         <section class="elements">
           <div class="element">
+            <button class="element__delete">
+              <img src="./images/eliminar.png" alt="Eliminar" />
+            </button>
             <img
               src="./images/ImagenUno.jpg"
               alt="Paisaje 1"
               class="element__image"
             />
+
             <div class="element__description">
               <p>Austria</p>
               <button class="element__button">
@@ -79,6 +119,9 @@
             </div>
           </div>
           <div class="element">
+            <button class="element__delete">
+              <img src="./images/eliminar.png" alt="Eliminar" />
+            </button>
             <img
               src="./images/ImagenDos.jpg"
               alt="Paisaje 2"
@@ -96,6 +139,9 @@
             </div>
           </div>
           <div class="element">
+            <button class="element__delete">
+              <img src="./images/eliminar.png" alt="Eliminar" />
+            </button>
             <img
               src="./images/ImagenTres.jpg"
               alt="Paisaje 3"
@@ -113,6 +159,9 @@
             </div>
           </div>
           <div class="element">
+            <button class="element__delete">
+              <img src="./images/eliminar.png" alt="Eliminar" />
+            </button>
             <img
               src="./images/ImagenCuatro.jpg"
               alt="Paisaje 4"
@@ -130,6 +179,9 @@
             </div>
           </div>
           <div class="element">
+            <button class="element__delete">
+              <img src="./images/eliminar.png" alt="Eliminar" />
+            </button>
             <img
               src="./images/ImagenCinco.jpg"
               alt="Paisaje 5"
@@ -147,6 +199,9 @@
             </div>
           </div>
           <div class="element">
+            <button class="element__delete">
+              <img src="./images/eliminar.png" alt="Eliminar" />
+            </button>
             <img
               src="./images/ImagenSeis.jpg"
               alt="Paisaje 6"
@@ -164,6 +219,20 @@
             </div>
           </div>
         </section>
+
+        <dialog id="image-popup" class="image-popup">
+          <button class="image-popup__close-button">
+            <img
+              src="./images/CloseIcon.svg"
+              alt="Cerrar"
+              id="image-popup-close"
+              class="image-popup__close-icon"
+            />
+          </button>
+          <img src="" alt="Imagen ampliada" class="image-popup__image" />
+          <div class="image-popup__description"></div>
+        </dialog>
+
         <footer>
           <p class="footer">&#169; 2024. Nestor Torres</p>
         </footer>
