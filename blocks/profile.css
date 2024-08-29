@@ -77,6 +77,14 @@
   opacity: 0.7;
 }
 
+.form__input:invalid {
+  border-bottom: 1px solid red;
+}
+
+.form__input:valid {
+  border-bottom: 1px solid green;
+}
+
 @media screen and (max-width: 880px) {
   .profile {
     width: 282px;

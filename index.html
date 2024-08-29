@@ -36,6 +36,7 @@
             <img src="./images/Agregar.png" alt="Agregar" />
           </button>
         </section>
+
         <dialog id="edit">
           <button class="profile__close-button">
             <img
@@ -52,12 +53,17 @@
               class="profile__edit-form-input profile__edit-form-input_name"
               placeholder="Nombre"
               id="name"
+              required
+              minlength="2"
             />
             <input
               type="text"
               class="profile__edit-form-input profile__edit-form-input_job"
               placeholder="Acerca de mí"
               id="job"
+              required
+              minlength="2"
+              maxlength="200"
             />
             <button
               id="save-button"
@@ -84,12 +90,16 @@
               class="profile__add-form-input profile__add-form-input_place"
               placeholder="Lugar"
               id="place"
+              required
+              minlength="2"
+              maxlength="40"
             />
             <input
               type="text"
               class="profile__add-form-input profile__add-form-input_url"
               placeholder="URL"
               id="url"
+              required
             />
             <button
               id="save-button"
@@ -240,4 +250,5 @@
     </div>
   </body>
   <script src="./javascript/script.js"></script>
+  <script src="./javascript/validacion.js"></script>
 </html>

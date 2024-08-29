@@ -228,3 +228,42 @@ imagePopup.addEventListener("close", function () {
 imagePopup.addEventListener("show", function () {
   closeButton.style.display = "block";
 });
+
+// Cerrar fuera y esc
+
+// Función para cerrar el diálogo al hacer clic fuera de él
+function closeOnClickOutside(dialog) {
+  window.addEventListener("click", function (event) {
+    if (event.target === dialog) {
+      dialog.close();
+      resetOpacity();
+    }
+  });
+}
+
+// Función para cerrar el diálogo al presionar la tecla Esc
+function closeOnEscape(dialog) {
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && dialog.open) {
+      dialog.close();
+      resetOpacity();
+    }
+  });
+}
+
+// Función para restablecer la opacidad
+function resetOpacity() {
+  document.querySelector(".header").style.opacity = "1";
+  document.querySelector(".profile").style.opacity = "1";
+  document.querySelector(".elements").style.opacity = "1";
+  document.querySelector(".footer").style.opacity = "1";
+}
+
+const dialogs = [profileEdit, addDialog, imagePopup];
+
+dialogs.forEach((dialog) => {
+  closeOnClickOutside(dialog);
+  closeOnEscape(dialog);
+});
+
+// El resto de tu código...
