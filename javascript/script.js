@@ -189,10 +189,6 @@ addForm.addEventListener("submit", handleAddFormSubmit);
 
 // Abrir imagen *Aún faltan detalles :( *
 
-// Si alguien lee este comentario HELP, el diseño en Figma es el mismo del Sprint pasado
-// por lo que solo me guio con lo que se aprecia en la descripcion del proyecto en la pagina del Bootcamp
-// que por cierto se traba mucho, supongo que es por los videos que están insertados.
-
 document.addEventListener("DOMContentLoaded", function () {
   const images = document.querySelectorAll(".element__image");
   const imagePopup = document.getElementById("image-popup");
@@ -265,5 +261,3 @@ dialogs.forEach((dialog) => {
   closeOnClickOutside(dialog);
   closeOnEscape(dialog);
 });
-
-// El resto de tu código...
