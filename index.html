@@ -22,7 +22,7 @@
         <section class="profile" id="profile">
           <img
             src="./images/Jacques.jpg"
-            alt="Imagen de perfil."
+            alt="Imagen de perfil"
             class="profile__avatar"
           />
           <div class="profile__info">
@@ -36,79 +36,6 @@
             <img src="./images/Agregar.png" alt="Agregar" />
           </button>
         </section>
-
-        <dialog id="edit">
-          <button class="profile__close-button">
-            <img
-              src="./images/CloseIcon.svg"
-              alt="Cerrar"
-              id="edit-button-close"
-              class="profile__close-icon"
-            />
-          </button>
-          <form class="profile__edit-form" id="profile-form">
-            <header class="profile__edit-form-header">Editar Perfil</header>
-            <input
-              type="text"
-              class="profile__edit-form-input profile__edit-form-input_name"
-              placeholder="Nombre"
-              id="name"
-              required
-              minlength="2"
-            />
-            <input
-              type="text"
-              class="profile__edit-form-input profile__edit-form-input_job"
-              placeholder="Acerca de mí"
-              id="job"
-              required
-              minlength="2"
-              maxlength="200"
-            />
-            <button
-              id="save-button"
-              class="profile__edit-form-button profile__edit-form-button_save"
-            >
-              Guardar
-            </button>
-          </form>
-        </dialog>
-
-        <dialog id="add">
-          <button class="profile__close-button">
-            <img
-              src="./images/CloseIcon.svg"
-              alt="Cerrar"
-              id="add-button-close"
-              class="add__close-icon"
-            />
-          </button>
-          <form class="profile__add-form" id="add-form">
-            <header class="profile__add-form-header">Nuevo lugar</header>
-            <input
-              type="text"
-              class="profile__add-form-input profile__add-form-input_place"
-              placeholder="Lugar"
-              id="place"
-              required
-              minlength="2"
-              maxlength="40"
-            />
-            <input
-              type="text"
-              class="profile__add-form-input profile__add-form-input_url"
-              placeholder="URL"
-              id="url"
-              required
-            />
-            <button
-              id="save-button"
-              class="profile__add-form-button profile__add-form-button_save"
-            >
-              Guardar
-            </button>
-          </form>
-        </dialog>
 
         <section class="elements">
           <div class="element">
@@ -230,25 +157,102 @@
           </div>
         </section>
 
-        <dialog id="image-popup" class="image-popup">
-          <button class="image-popup__close-button">
+        <footer>
+          <p class="footer">&#169; 2024. Nestor Torres</p>
+        </footer>
+
+        <div class="overlay" id="overlay"></div>
+
+        <form class="profile__edit-form" id="profile-form">
+          <header class="profile__edit-form-header">Editar Perfil</header>
+          <input
+            type="text"
+            class="profile__edit-form-input profile__edit-form-input_name"
+            placeholder="Nombre"
+            id="name"
+            required
+            minlength="2"
+            maxlength="40"
+          />
+          <div class="error-message" id="name-error"></div>
+          <input
+            type="text"
+            class="profile__edit-form-input profile__edit-form-input_job"
+            placeholder="Acerca de mí"
+            id="job"
+            required
+            minlength="2"
+            maxlength="200"
+          />
+          <div class="error-message" id="job-error"></div>
+          <button
+            id="save-button"
+            class="profile__edit-form-button profile__edit-form-button_save"
+          >
+            Guardar
+          </button>
+          <button class="profile__close-button">
+            <img
+              src="./images/CloseIcon.svg"
+              alt="Cerrar"
+              id="edit-button-close"
+              class="profile__close-icon"
+            />
+          </button>
+        </form>
+
+        <form class="profile__add-form" id="add-form">
+          <header class="profile__add-form-header">Nuevo lugar</header>
+          <input
+            type="text"
+            class="profile__add-form-input profile__add-form-input_place"
+            placeholder="Lugar"
+            id="place"
+            required
+            minlength="2"
+            maxlength="30"
+          />
+          <div class="error-message" id="place-error"></div>
+          <input
+            type="text"
+            class="profile__add-form-input profile__add-form-input_url"
+            placeholder="URL"
+            id="url"
+            required
+          />
+          <div class="error-message" id="url-error"></div>
+          <button
+            id="save-button"
+            class="profile__add-form-button profile__add-form-button_save"
+          >
+            Guardar
+          </button>
+          <button class="profile__close-button">
+            <img
+              src="./images/CloseIcon.svg"
+              alt="Cerrar"
+              id="add-button-close"
+              class="add__close-icon"
+            />
+          </button>
+        </form>
+
+        <form class="image__popup-form" id="image-popup">
+          <button class="image__popup-close-button">
             <img
               src="./images/CloseIcon.svg"
               alt="Cerrar"
               id="image-popup-close"
-              class="image-popup__close-icon"
+              class="image__popup-close-icon"
             />
           </button>
-          <img src="" alt="Imagen ampliada" class="image-popup__image" />
-          <div class="image-popup__description"></div>
-        </dialog>
-
-        <footer>
-          <p class="footer">&#169; 2024. Nestor Torres</p>
-        </footer>
+          <img src="" alt="Imagen ampliada" class="image__popup-image" />
+          <div class="image__popup-description"></div>
+        </form>
       </main>
     </div>
   </body>
-  <script src="./javascript/script.js"></script>
-  <script src="./javascript/validacion.js"></script>
+  <script src="./javascript/script2.js"></script>
+  <script src="./javascript/imagenpopup.js"></script>
+  <script src="./javascript/formsvalid.js"></script>
 </html>
