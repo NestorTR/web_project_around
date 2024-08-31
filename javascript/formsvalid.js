@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Validación del campo Lugar
     if (!placeInput.checkValidity()) {
       document.getElementById("place-error").textContent =
-        placeInput.validationMessage;
+        placeInput.validationMessage || "Por favor, rellena este campo.";
       valid = false;
     } else {
       document.getElementById("place-error").textContent = "";
