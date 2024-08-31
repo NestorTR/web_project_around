@@ -25,7 +25,7 @@
   top: 195px;
   left: 425px;
   gap: 0px;
-  opacity: 0px;
+  opacity: 0.3px;
 }
 
 .profile__add-form-input {
@@ -35,7 +35,7 @@
   left: 460px;
   gap: 0px;
   border: 1px 0px 0px 0px;
-  opacity: 0px;
+  opacity: 0.3px;
 }
 
 .profile__add-form-button {
@@ -46,7 +46,7 @@
   gap: 0px;
   border-radius: 2px 0px 0px 0px;
   border: 1px 0px 0px 0px;
-  opacity: 0px;
+  opacity: 0.3px;
   background: #c4c4c4;
   margin: 0 36px 36px 36px;
 }

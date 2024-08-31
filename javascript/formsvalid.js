@@ -61,18 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
         placeInput.validationMessage;
       valid = false;
     } else {
-      document.getElementById("place-error").textContent =
-        "Por favor, rellena este campo.";
+      document.getElementById("place-error").textContent = "";
     }
 
     // Validación del campo URL
-    try {
-      new URL(urlInput.value);
-      document.getElementById("url-error").textContent = "";
-    } catch (_) {
+    const urlPattern =
+      /^(https?:\/\/)?([\w\d-]+\.){1,}([a-zA-Z]{2,})(\/[^\s]*)?$/;
+    if (!urlPattern.test(urlInput.value)) {
       document.getElementById("url-error").textContent =
-        "Por favor, introduce una dirección web.";
+        "Por favor, introduce una dirección web válida.";
       valid = false;
+    } else {
+      document.getElementById("url-error").textContent = "";
     }
 
     // Activar o desactivar el botón Guardar
@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     saveButton.style.backgroundColor = valid ? "black" : "";
   }
 
-  // Añadir eventos para la validación en tiempo real
   placeInput.addEventListener("input", validateAddForm);
   urlInput.addEventListener("input", validateAddForm);
 

@@ -17,13 +17,11 @@ const placeInput = document.getElementById("place");
 const urlInput = document.getElementById("url");
 const saveButtonAdd = addForm.querySelector("#save-button");
 
-// Mostrar el formulario y overlay
 function showForm(form) {
   overlay.style.display = "block";
   form.style.display = "block";
 }
 
-// Ocultar el formulario y overlay
 function hideForm(form) {
   form.style.display = "none";
   overlay.style.display = "none";
