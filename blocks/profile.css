@@ -133,12 +133,6 @@
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 590px) {
-  .profile__job {
-    padding-bottom: 36px;
-  }
-}
-
 @media screen and (max-width: 880px) {
   .header {
     width: 282px;
@@ -148,5 +142,11 @@
     width: 126px;
     height: 24px;
     margin-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .profile__job {
+    padding-bottom: 36px;
   }
 }
