@@ -18,22 +18,22 @@
   background-color: #ffffff;
   font-family: "Inter", sans-serif;
   border-radius: 8px;
-  padding: 20px; /* Ajustar el padding para evitar contenido pegado al borde */
+  padding: 20px;
   z-index: 20;
   width: 430px;
-  max-width: 90vw; /* Limitar el ancho máximo en pantallas pequeñas */
-  height: auto; /* Permitir que el contenido determine la altura */
+  max-width: 90vw;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 10px; /* Añadir un espacio entre los elementos */
-  box-sizing: border-box; /* Asegura que el padding y border se incluyan en el tamaño total */
+  gap: 10px;
+  box-sizing: border-box;
 }
 
 .profile__edit-form-input {
-  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  width: 100%;
   padding: 13px;
-  box-sizing: border-box; /* Incluir padding en el tamaño total */
+  box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #ccc;
   outline: none;
@@ -42,14 +42,14 @@
 }
 
 .profile__edit-form-button {
-  width: 100%; /* Ajustar el ancho al 100% */
+  width: 100%;
   padding: 13px;
   background-color: #c4c4c4;
   color: #ffffff;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 20px; /* Reducir el margen en la parte inferior */
+  margin-bottom: 20px;
 }
 
 .profile__close-button {
@@ -69,24 +69,24 @@
 .profile__edit-form-header {
   font-size: 24px;
   font-weight: 900;
-  margin-bottom: 20px; /* Reducir margen inferior */
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 500px) {
   .profile__edit-form {
-    width: 90%; /* Ajusta el ancho del formulario al 90% de la pantalla */
+    width: 90%;
     height: auto;
     padding: 10px;
   }
 
   .profile__edit-form-input,
   .profile__edit-form-button {
-    width: 100%; /* Asegura que los inputs y botones ocupen todo el ancho */
+    width: 100%;
     padding: 10px;
   }
 
   .profile__edit-form-header {
-    font-size: 18px; /* Ajusta el tamaño de la cabecera */
+    font-size: 18px;
   }
 
   .profile__close-button {
