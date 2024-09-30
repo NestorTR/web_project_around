@@ -5,14 +5,11 @@ const editButtonClose = document.getElementById("edit-button-close");
 const addButtonOpen = document.querySelector(".profile__add-button");
 const addForm = document.getElementById("add-form");
 const addButtonClose = document.getElementById("add-button-close");
-
 const profileName = document.getElementById("profile-name");
 const profileJob = document.getElementById("profile-job");
-
 const nameInput = document.getElementById("name");
 const jobInput = document.getElementById("job");
 const saveButtonProfile = profileForm.querySelector("#save-button");
-
 const placeInput = document.getElementById("place");
 const urlInput = document.getElementById("url");
 const saveButtonAdd = addForm.querySelector("#save-button");

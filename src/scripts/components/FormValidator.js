@@ -71,4 +71,88 @@ document.addEventListener("DOMContentLoaded", () => {
   const addForm = document.getElementById("add-form");
   const addFormValidator = new FormValidator(formValidationConfig, addForm);
   addFormValidator.enableValidation();
+
+  // VALIDACIÓN DE PERFIL
+  const nameInput = document.getElementById("name");
+  const jobInput = document.getElementById("job");
+  const profileSaveButton = document.getElementById("save-button-profile");
+
+  function validateProfileForm() {
+    let valid = true;
+
+    // Validación del campo Nombre
+    if (!nameInput.checkValidity()) {
+      document.getElementById("name-error").textContent =
+        nameInput.validationMessage;
+      valid = false;
+    } else {
+      document.getElementById("name-error").textContent = "";
+    }
+
+    // Validación del campo Acerca de
+    if (!jobInput.checkValidity()) {
+      document.getElementById("job-error").textContent =
+        jobInput.validationMessage;
+      valid = false;
+    } else {
+      document.getElementById("job-error").textContent = "";
+    }
+
+    // Activar o desactivar el botón Guardar
+    profileSaveButton.disabled = !valid;
+  }
+
+  nameInput.addEventListener("input", validateProfileForm);
+  jobInput.addEventListener("input", validateProfileForm);
+
+  profileForm.addEventListener("submit", (e) => {
+    if (!profileForm.checkValidity()) {
+      e.preventDefault();
+      validateProfileForm();
+    }
+  });
+
+  // VALIDACIÓN DE NUEVO LUGAR
+  const placeInput = document.getElementById("place");
+  const urlInput = document.getElementById("url");
+  const addSaveButton = document.getElementById("save-button-add");
+
+  function validateAddForm() {
+    let valid = true;
+
+    // Validación del campo Lugar
+    if (!placeInput.checkValidity()) {
+      document.getElementById("place-error").textContent =
+        placeInput.validationMessage || "Por favor, rellena este campo.";
+      valid = false;
+    } else {
+      document.getElementById("place-error").textContent = "";
+    }
+
+    // Validación del campo URL
+    const urlPattern =
+      /^(https?:\/\/)?([\w\d-]+\.){1,}([a-zA-Z]{2,})(\/[^\s]*)?$/;
+    if (!urlPattern.test(urlInput.value)) {
+      document.getElementById("url-error").textContent =
+        "Por favor, introduce una dirección web válida.";
+      valid = false;
+    } else {
+      document.getElementById("url-error").textContent = "";
+    }
+
+    // Activar o desactivar el botón Guardar
+    addSaveButton.disabled = !valid;
+    addSaveButton.style.backgroundColor = valid ? "black" : "";
+  }
+
+  placeInput.addEventListener("input", validateAddForm);
+  urlInput.addEventListener("input", validateAddForm);
+
+  addForm.addEventListener("submit", (e) => {
+    validateAddForm();
+
+    if (!addForm.checkValidity() || addSaveButton.disabled) {
+      e.preventDefault();
+    }
+  });
 });
