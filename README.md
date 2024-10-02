@@ -12,6 +12,8 @@
 
 - JAVASCRIPT
 
+- WEBPACK
+
 # ENLACE A GITHUB PAGES
 
 https://nestortr.github.io/web_project_around/

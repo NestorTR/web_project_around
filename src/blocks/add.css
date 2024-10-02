@@ -21,17 +21,17 @@
   padding: 20px;
   z-index: 20;
   width: 430px;
-  height: auto; /* Permitir ajuste dinámico */
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 10px; /* Separar los elementos internos */
+  gap: 10px;
 }
 
 .profile__add-form-input {
-  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  width: 100%;
   padding: 13px;
-  box-sizing: border-box; /* Incluir padding en el tamaño total */
+  box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #ccc;
   outline: none;
@@ -40,14 +40,14 @@
 }
 
 .profile__add-form-button {
-  width: 100%; /* Ajustar el ancho al 100% */
+  width: 100%;
   padding: 13px;
   background-color: #c4c4c4;
   color: #ffffff;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 20px; /* Reducir el margen en la parte inferior */
+  margin-bottom: 20px;
 }
 
 .profile__close-button {
