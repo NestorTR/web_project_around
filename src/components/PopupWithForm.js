@@ -1,34 +1,31 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
+  constructor(popupSelector, callBack) {
     super(popupSelector);
-    this._handleFormSubmit = handleFormSubmit; // Callback para el submit
-    this._form = this._popup.querySelector(".popup__form");
-    this._inputList = this._form.querySelectorAll(".popup__input");
+    this._submitCallback = callBack;
   }
-
-  // Método privado para obtener los valores de los inputs
   _getInputValues() {
-    const formValues = {};
-    this._inputList.forEach((input) => {
-      formValues[input.name] = input.value;
+    const inputValues = {};
+    const form = this._popupElement.querySelector("form");
+    Array.from(form.querySelectorAll("input")).forEach((input) => {
+      inputValues[input.name] = input.value;
     });
-    return formValues;
-  }
 
-  // Sobreescribimos el método setEventListeners() para manejar el submit
+    return inputValues;
+  }
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      this._handleFormSubmit(this._getInputValues()); // Llamada al callback con los valores
+    const form = this._popupElement.querySelector("form");
+    form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._submitCallback(this._getInputValues());
+      form.reset();
+      this.close();
     });
   }
-
-  // Sobreescribimos el método close() para reiniciar el formulario
   close() {
+    const form = this._popupElement.querySelector("form");
     super.close();
-    this._form.reset(); // Reinicia el formulario
   }
 }

@@ -1,56 +1,39 @@
-// utils.js
+import Card from "../components/Card.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+export const modal = document.getElementById("ventana_modal");
+export const boton = document.getElementById("btn_open_modal"); //boton que abre el modal
+export const cerrar = document.getElementById("btn_close_modal"); //boton que cierra el modal
+export const modalImage = document.querySelector(".modalImage");
+export const modalAdd = document.querySelector("#ventana_modal-add");
+export const btnAdd = document.querySelector(".profile__button-add");
+export const btnClose = document.querySelector("#btn_close_modal-add");
+export const profileName = document.querySelector(".profile-info__avatar_name");
+export const profileAbout = document.querySelector(
+  ".profile-info__avatar_ocupation"
+);
+export const popupCard = document.querySelector(".modalImage");
+export const inputName = document.querySelector("#input_name");
+export const inputAbout = document.querySelector("#input_about");
+const popupImage = new PopupWithImage(".modalImage");
 
-// Función para mostrar el formulario (modal)
-export function showForm(form, overlay) {
-  overlay.style.display = "block";
-  form.style.display = "block";
-}
-
-// Función para ocultar el formulario (modal)
-export function hideForm(form, overlay) {
-  form.style.display = "none";
-  overlay.style.display = "none";
-}
-
-// Función para configurar el cierre al hacer clic fuera del formulario
-export function setupClickOutside(form, overlay) {
-  overlay.addEventListener("click", function (event) {
-    if (event.target === overlay) {
-      hideForm(form, overlay);
-    }
+export function openImagePopup(name, link) {
+  const Image = document.querySelector(".modalImage");
+  const closeImage = document.querySelector(".modalImage__close");
+  const openImage = document.querySelector(".modalImage__open");
+  const titleImage = document.querySelector(".modalImage__description");
+  Image.style.display = "block";
+  openImage.src = link;
+  titleImage.textContent = name;
+  closeImage.addEventListener("click", function (evt) {
+    Image.style.display = "none";
   });
+}
 
-  // Cerrar el formulario con la tecla ESC
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      if (form.style.display === "block") {
-        hideForm(form, overlay);
-      }
-    }
+export function cardGenerator(name, link) {
+  const card = new Card(name, link, ".template-card", {
+    handleCardClick: () => {
+      popupImage.open(name, link);
+    },
   });
-}
-
-// Función para abrir el popup de la imagen
-export function openPopup(
-  imagePopupForm,
-  popupImage,
-  popupDescription,
-  imageSrc,
-  description
-) {
-  popupImage.src = imageSrc;
-  popupDescription.textContent = description;
-  imagePopupForm.style.display = "flex";
-}
-
-// Función para cerrar el popup de la imagen
-export function closePopup(imagePopupForm) {
-  imagePopupForm.style.display = "none";
-}
-
-// Función para manejar la tecla ESC para cerrar el popup de imagen
-export function handleEscKey(event, imagePopupForm) {
-  if (event.key === "Escape") {
-    closePopup(imagePopupForm);
-  }
+  return card.generateCard();
 }

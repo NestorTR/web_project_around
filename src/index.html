@@ -2,253 +2,188 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <title>Around the U.S.</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Nestor Torres" />
     <meta name="description" content="Around the U.S." />
+    <title>Around the U.S.</title>
   </head>
-  <body>
+  <body class="body">
     <div class="page">
       <header class="header">
         <img
-          src="./images/AroundTheUS.png"
+          src="<%=require('./images/AroundTheUS.png')%>"
           alt="Logo Around the U.S."
           class="header__logo"
         />
       </header>
 
       <main class="content">
-        <section class="profile" id="profile">
+        <section class="profile">
           <img
-            src="./images/Jacques.jpg"
-            alt="Imagen de perfil"
+            src="<%=require('./images/Jacques.jpg')%>"
+            alt="Avatar"
             class="profile__avatar"
           />
-          <div class="profile__info">
-            <h2 class="profile__name" id="profile-name">Jacques Cousteau</h2>
-            <h3 class="profile__job" id="profile-job">Explorador</h3>
-            <button id="edit-button-open" class="profile__edit-button">
-              <img src="./images/Editar.png" alt=" Boton editar" />
-            </button>
+          <div class="profile-info">
+            <h2 class="profile-info__avatar profile-info__avatar_name">
+              Jacques Cousteau
+            </h2>
+            <p class="profile-info__avatar profile-info__avatar_ocupation">
+              Explorador
+            </p>
           </div>
-          <button class="profile__add-button">
-            <img src="./images/Agregar.png" alt="Agregar" />
-          </button>
+          <img
+            src="<%=require('./images/Editar.png')%>"
+            class="profile__edit-button"
+            alt="Edit"
+            id="btn_open_modal"
+          />
+          <img
+            src="<%=require('./images/Agregar.png')%>"
+            class="profile__button-add"
+            alt="Add"
+          />
         </section>
 
-        <section class="elements">
-          <div class="element">
-            <button class="element__delete">
-              <img src="./images/eliminar.png" alt="Eliminar" />
-            </button>
-            <img
-              src="./images/ImagenUno.jpg"
-              alt="Paisaje 1"
-              class="element__image"
-            />
+        <div id="ventana_modal" class="modal">
+          <section class="popup" id="popup_profile">
+            <form class="popup__container form" novalidate autocomplete="off">
+              <fieldset class="popup__container-fieldset">
+                <img
+                  src="<%=require('./images/CloseIcon.svg')%>"
+                  alt="Close"
+                  class="popup__close"
+                  id="btn_close_modal"
+                />
+                <h2 class="popup__title">Editar perfil</h2>
+                <input
+                  class="popup__info popup__info_name"
+                  type="text"
+                  placeholder="Nombre"
+                  id="input_name"
+                  minlength="2"
+                  maxlength="40"
+                  name="name"
+                  required
+                />
+                <span class="popup__error popup__error_name"></span>
+                <input
+                  class="popup__info popup__info_about"
+                  type="text"
+                  required
+                  name="about"
+                  placeholder="Acerca de mi"
+                  id="input_about"
+                  minlength="2"
+                  maxlength="200"
+                />
+                <span class="popup__error popup__error_about"></span>
+                <button
+                  class="popup__info popup__info_submit"
+                  type="submit"
+                  id="btn_save"
+                >
+                  Guardar
+                </button>
+              </fieldset>
+            </form>
+          </section>
+        </div>
 
-            <div class="element__description">
-              <p>Austria</p>
-              <button class="element__button">
-                <img src="./images/Like.png" alt="Like button" id="heart-off" />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <button class="element__delete">
-              <img src="./images/eliminar.png" alt="Eliminar" />
-            </button>
-            <img
-              src="./images/ImagenDos.jpg"
-              alt="Paisaje 2"
-              class="element__image"
-            />
-            <div class="element__description">
-              <p>Noruega</p>
-              <button class="element__button">
+        <section class="places">
+          <div class="elements"></div>
+          <template class="template-card">
+            <div class="element">
+              <div class="elements-card">
                 <img
-                  src="./images/Like.png"
-                  alt="Like button"
-                  id="heart-off-2"
+                  src=""
+                  alt=""
+                  class="elements-card__element elements-card__element_image"
+                  id="image_card"
                 />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <button class="element__delete">
-              <img src="./images/eliminar.png" alt="Eliminar" />
-            </button>
-            <img
-              src="./images/ImagenTres.jpg"
-              alt="Paisaje 3"
-              class="element__image"
-            />
-            <div class="element__description">
-              <p>Arabia</p>
-              <button class="element__button">
                 <img
-                  src="./images/Like.png"
-                  alt="Like button"
-                  id="heart-off-3"
+                  src="<%=require('./images/eliminar.png')%>"
+                  alt="Trash"
+                  class="elements-card__element elements-card__element_trash"
                 />
-              </button>
+              </div>
+              <div class="elements-name">
+                <h2 class="elements-name__place elements-name__place"></h2>
+                <button
+                  class="elements-name__place elements-name__place_like"
+                ></button>
+              </div>
             </div>
+          </template>
+
+          <div id="ventana_modal-add" class="modal-add">
+            <section class="popup" id="popup_addCard">
+              <form
+                class="popup__container form"
+                id="popup_cards"
+                autocomplete="off"
+                novalidate
+              >
+                <fieldset class="popup__container-fieldset">
+                  <img
+                    src="<%=require('./images/CloseIcon.svg')%>"
+                    alt="Close"
+                    class="popup__close-add"
+                    id="btn_close_modal-add"
+                  />
+                  <h2 class="popup__create popup__create_title">Nuevo Lugar</h2>
+                  <input
+                    class="popup__info popup__info_name"
+                    type="text"
+                    required
+                    name="name"
+                    minlength="2"
+                    maxlength="30"
+                    placeholder="Titulo"
+                    id="input_title"
+                  />
+                  <span class="popup__error popup__error_name"></span>
+                  <input
+                    class="popup__info popup__info_link"
+                    type="url"
+                    required
+                    name="link"
+                    placeholder="Ingresa una URL"
+                    id="input_link"
+                  />
+                  <span class="popup__error popup__error_link"></span>
+                  <button
+                    class="popup__info popup__info_submit"
+                    type="submit"
+                    id="btn_save-add"
+                  >
+                    Guardar
+                  </button>
+                </fieldset>
+              </form>
+            </section>
           </div>
-          <div class="element">
-            <button class="element__delete">
-              <img src="./images/eliminar.png" alt="Eliminar" />
-            </button>
-            <img
-              src="./images/ImagenCuatro.jpg"
-              alt="Paisaje 4"
-              class="element__image"
-            />
-            <div class="element__description">
-              <p>Suiza</p>
-              <button class="element__button">
+
+          <div class="modalImage" id="popup_add">
+            <div class="modalImage__popup">
+              <div class="modalImage__content">
+                <img src="" alt="" class="modalImage__open" />
                 <img
-                  src="./images/Like.png"
-                  alt="Like button"
-                  id="heart-off-4"
+                  src="<%=require('./images/CloseIcon.svg')%>"
+                  alt="Close"
+                  class="modalImage__close"
                 />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <button class="element__delete">
-              <img src="./images/eliminar.png" alt="Eliminar" />
-            </button>
-            <img
-              src="./images/ImagenCinco.jpg"
-              alt="Paisaje 5"
-              class="element__image"
-            />
-            <div class="element__description">
-              <p>Tahití</p>
-              <button class="element__button">
-                <img
-                  src="./images/Like.png"
-                  alt="Like button"
-                  id="heart-off-5"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <button class="element__delete">
-              <img src="./images/eliminar.png" alt="Eliminar" />
-            </button>
-            <img
-              src="./images/ImagenSeis.jpg"
-              alt="Paisaje 6"
-              class="element__image"
-            />
-            <div class="element__description">
-              <p>Canadá</p>
-              <button class="element__button">
-                <img
-                  src="./images/Like.png"
-                  alt="Like button"
-                  id="heart-off-6"
-                />
-              </button>
+                <p class="modalImage__description"></p>
+              </div>
             </div>
           </div>
         </section>
 
-        <footer>
-          <p class="footer">&#169; 2024. Nestor Torres</p>
-        </footer>
-
-        <div class="overlay" id="overlay"></div>
-
-        <form class="profile__edit-form" id="profile-form">
-          <header class="profile__edit-form-header">Editar Perfil</header>
-          <input
-            type="text"
-            class="profile__edit-form-input profile__edit-form-input_name"
-            placeholder="Nombre"
-            id="name"
-            required
-            minlength="2"
-            maxlength="40"
-          />
-          <div class="error-message" id="name-error"></div>
-          <input
-            type="text"
-            class="profile__edit-form-input profile__edit-form-input_job"
-            placeholder="Acerca de mí"
-            id="job"
-            required
-            minlength="2"
-            maxlength="200"
-          />
-          <div class="error-message" id="job-error"></div>
-          <button
-            id="save-button"
-            class="profile__edit-form-button profile__edit-form-button_save"
-          >
-            Guardar
-          </button>
-          <button class="profile__close-button">
-            <img
-              src="./images/CloseIcon.svg"
-              alt="Cerrar"
-              id="edit-button-close"
-              class="profile__close-icon"
-            />
-          </button>
-        </form>
-
-        <form class="profile__add-form" id="add-form">
-          <header class="profile__add-form-header">Nuevo lugar</header>
-          <input
-            type="text"
-            class="profile__add-form-input profile__add-form-input_place"
-            placeholder="Lugar"
-            id="place"
-            required
-            minlength="2"
-            maxlength="30"
-          />
-          <div class="error-message" id="place-error"></div>
-          <input
-            type="url"
-            class="profile__add-form-input profile__add-form-input_url"
-            placeholder="URL"
-            id="url"
-            required
-          />
-          <div class="error-message" id="url-error"></div>
-          <button
-            id="save-button"
-            class="profile__add-form-button profile__add-form-button_save"
-          >
-            Guardar
-          </button>
-          <button class="profile__close-button">
-            <img
-              src="./images/CloseIcon.svg"
-              alt="Cerrar"
-              id="add-button-close"
-              class="add__close-icon"
-            />
-          </button>
-        </form>
-
-        <form class="image__popup-form" id="image-popup">
-          <button class="image__popup-close-button">
-            <img
-              src="./images/CloseIcon.svg"
-              alt="Cerrar"
-              id="image-popup-close"
-              class="image__popup-close-icon"
-            />
-          </button>
-          <img src="" alt="Imagen ampliada" class="image__popup-image" />
-          <div class="image__popup-description"></div>
-        </form>
+        <section class="footer">
+          <div class="copyright">
+            <p class="footer">&#169; 2024. Nestor Torres</p>
+          </div>
+        </section>
       </main>
     </div>
   </body>

@@ -1,10 +1,22 @@
 .footer {
-  display: flex;
-  font-family: "inter", sans-serif;
-  max-width: 880px;
-  margin: 67px auto 60px auto;
+  margin: 0;
+  padding-top: 79px;
+}
+.copyright {
+  margin: auto;
+  max-width: 882px;
+}
+.copyright__footer_author {
+  margin: 0;
   color: #545454;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21.78px;
+  padding-top: 67px;
+}
+
+@media screen and (max-width: 890px) {
+  .copyright {
+    max-width: 280px;
+  }
+  .copyright__footer_author {
+    padding-top: 48px;
+  }
 }

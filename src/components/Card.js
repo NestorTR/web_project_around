@@ -1,36 +1,59 @@
-export default class Card {
-  constructor(data, handleCardClick, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
-    this._handleCardClick = handleCardClick; // Función para manejar clic en la tarjeta
-    this._cardSelector = cardSelector; // Selector del template
-  }
+import { openImagePopup } from "../utils/utils.js";
 
-  // Método para obtener la plantilla de la tarjeta
+export default class Card {
+  constructor(name, link, template, { handleCardClick }) {
+    this._name = name;
+    this._link = link;
+    this._template = template;
+    this._handleCardClick = handleCardClick;
+  }
   _getTemplate() {
     const cardElement = document
-      .querySelector(this._cardSelector)
+      .querySelector(this._template)
       .content.querySelector(".element")
       .cloneNode(true);
 
     return cardElement;
   }
-
-  // Método para crear la tarjeta
   generateCard() {
     this._element = this._getTemplate();
-    this._cardImage = this._element.querySelector(".element__image");
-    this._cardTitle = this._element.querySelector(".element__title");
-
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-    this._cardTitle.textContent = this._name;
-
-    // Agregar evento de clic para abrir el popup con la imagen
-    this._cardImage.addEventListener("click", () => {
-      this._handleCardClick(this._link, this._name);
-    });
-
+    this._element.querySelector(".elements-card__element_image").src =
+      this._link;
+    this._element.querySelector(".elements-name__place").textContent =
+      this._name;
+    this._setEventListeners();
     return this._element;
+  }
+
+  _handlerOpenPopup() {
+    openImagePopup(this._name, this._link);
+  }
+
+  _handlerLike() {
+    this._element
+      .querySelector(".elements-name__place_like")
+      .classList.toggle("elements-name__place_like_active");
+  }
+  _handleRemove() {
+    this.removeCard = this._element.remove();
+  }
+  _setEventListeners() {
+    this._element
+      .querySelector(".elements-card__element_image")
+      .addEventListener("click", () => {
+        this._handleCardClick(this._name, this._link);
+      });
+
+    this._element
+      .querySelector(".elements-card__element_trash")
+      .addEventListener("click", () => {
+        this._handleRemove();
+      });
+
+    this._element
+      .querySelector(".elements-name__place_like")
+      .addEventListener("click", () => {
+        this._handlerLike();
+      });
   }
 }
