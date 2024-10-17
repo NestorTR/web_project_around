@@ -1,100 +1,99 @@
-.places {
-  margin: auto;
-  max-width: 882px;
-  padding-top: 50px;
-}
-.element {
-  margin: 0;
-  width: 282px;
-  height: 282px;
-  position: relative;
-}
 .elements {
+  max-width: 882px;
+  margin: 0px auto;
+  padding-top: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 18px;
-  row-gap: 100px;
-}
-.elements-card {
-  display: flex;
+  gap: 21px 18px;
   width: 100%;
-  height: 100%;
-  justify-content: end;
 }
-.elements-card__element_image {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  object-fit: cover;
-  border-radius: 10px 10px 0 0;
-  cursor: pointer;
-}
-.elements-card__element_trash {
-  z-index: 1;
-  display: flex;
-  width: 18px;
-  height: 19.5px;
-  margin-top: 18px;
-  margin-right: 15px;
-  cursor: pointer;
-}
-.elements-card__element_trash:hover {
-  opacity: 0.5;
-}
-.elements-name {
-  background-color: white;
-  max-width: 282px;
-  width: 100%;
-  height: 79px;
 
-  display: flex;
-  border-radius: 0 0 10px 10px;
-}
-.elements-name__place {
-  margin: 0;
-  max-width: 246px;
-  width: 100%;
-  height: 23px;
-  font-size: 24px;
-  font-weight: 900;
-  padding-top: 25px;
-  padding-left: 21px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.element {
+  position: relative;
+  width: 282px;
+  border-radius: 10px 10px 10px 10px;
   overflow: hidden;
+  background-color: #fff;
 }
-.elements-name__place_like {
-  background-image: url(../images/Like.png);
-  background-repeat: no-repeat;
-  background-size: contain;
+
+.element__photo {
+  width: 282px;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+  display: block;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.element__button-trash {
   background-color: transparent;
   border: none;
-  display: flex;
-  width: 25px;
-  height: 25px;
-  margin-top: 25px;
-  margin-right: 20px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
 
+.element__button-trash:hover {
   cursor: pointer;
-}
-.elements-name__place_like_active {
-  background-image: url(../images/LikeOn.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.elements-name__place_like:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
-@media screen and (max-width: 890px) {
+.element__button-trash-img {
+  width: 18px;
+  height: 19.3px;
+}
+
+.element__info {
+  display: flex;
+  width: 282px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 18px 31px 21px;
+  border-bottom-right-radius: 10px 10px;
+  border-bottom-left-radius: 10px 10px;
+  position: relative;
+}
+
+.element__text {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 900;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 215px;
+}
+
+.element__button-heart {
+  background-color: transparent;
+  align-self: center;
+  border: none;
+  width: 21px;
+  height: 19px;
+  background-image: url("../images/Like.png");
+}
+
+.element__button-heart:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
+.element__button-heart_active {
+  background-image: url("../images/LikeOn.png");
+}
+
+@media screen and (max-width: 968px) {
   .elements {
-    max-width: 280px;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+    max-width: max-content;
+    grid-template-columns: repeat(2, 1fr);
   }
-  .places {
-    display: flex;
-    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .elements {
+    max-width: max-content;
+    grid-template-columns: 1fr;
   }
 }

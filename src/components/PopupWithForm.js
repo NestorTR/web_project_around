@@ -1,31 +1,41 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, callBack) {
-    super(popupSelector);
-    this._submitCallback = callBack;
+  constructor({ popupSelector, handleFormSubmit }) {
+    super({ popupSelector });
+    this._handleFormSubmit = handleFormSubmit;
+    this._formElement = this._popUp.querySelector(".pop-up__form");
+    this._inputList = this._formElement.querySelectorAll(".pop-up__form-item");
   }
+
   _getInputValues() {
-    const inputValues = {};
-    const form = this._popupElement.querySelector("form");
-    Array.from(form.querySelectorAll("input")).forEach((input) => {
-      inputValues[input.name] = input.value;
+    this._formValues = {};
+
+    this._inputList.forEach((input) => {
+      this._formValues[input.name] = input.value;
     });
 
-    return inputValues;
+    return this._formValues;
   }
+
   setEventListeners() {
     super.setEventListeners();
-    const form = this._popupElement.querySelector("form");
-    form.addEventListener("submit", (evt) => {
+
+    this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitCallback(this._getInputValues());
-      form.reset();
-      this.close();
+
+      this._formElement.querySelector(".pop-up__save-button").textContent =
+        "Guardando...";
+      this._handleFormSubmit(this._getInputValues()).then(() => {
+        this._formElement.querySelector(".pop-up__save-button").textContent =
+          "Guardar";
+        this.close();
+      });
     });
   }
+
   close() {
-    const form = this._popupElement.querySelector("form");
     super.close();
+    this._formElement.reset();
   }
 }

@@ -1,99 +1,188 @@
 import "./pages/index.css";
-import Card from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
+import { Card } from "./components/Card.js";
 import {
-  boton,
-  btnAdd,
-  inputAbout,
-  inputName,
+  cardContainer,
+  formConfig,
+  popUpImage,
+  popUpCard,
+  ButtonAddCard,
+  popUpProfile,
+  openButton,
   profileName,
-  profileAbout,
+  profileJob,
+  nameInput,
+  jobInput,
+  popUpConfirmation,
+  popUpAvatar,
+  avatarImage,
 } from "./utils/utils.js";
+import { FormValidator } from "./components/FormValidator.js";
 import Section from "./components/Section.js";
-import UserInfo from "./components/UserInfo.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
-import { cardGenerator } from "./utils/utils.js";
-const formProfile = document.querySelector(".popup__container");
-const formCards = document.querySelector("#popup_addCard");
-const cardArea = document.querySelector(".elements");
-const initialCards = [
-  {
-    name: "Austria",
-    link: "https://images.unsplash.com/photo-1520503922584-590e8f7a90d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Noruega",
-    link: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Arabia",
-    link: "https://images.unsplash.com/photo-1507671280192-5900ae887d3d?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Suiza",
-    link: "https://images.unsplash.com/photo-1462651567147-aa679fd1cfaf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Tahití",
-    link: "https://images.unsplash.com/photo-1706868882998-75f31e94a5f6?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Canadá",
-    link: "https://images.unsplash.com/photo-1506104489822-562ca25152fe?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
-//Instanciar para agregar imagenes con el handlerCardClick
-const popupImageCard = new PopupWithImage("#popup_add");
-const popupAddButton = new PopupWithForm(
-  "#ventana_modal-add",
-  (inputValues) => {
-    const card = new Card(
-      inputValues.name,
-      inputValues.link,
-      ".template-card",
+import PopupWithConfirmation from "./components/PopupWithConfirmation.js";
+import UserInfo from "./components/UserInfo.js";
+import api from "./components/Api.js";
+
+const avatarNode = document.querySelector(".profile__avatar");
+
+let currentUser = null;
+let cardList = null;
+
+const userInfo = new UserInfo({
+  nameSelector: profileName,
+  jobSelector: profileJob,
+});
+
+// Información del Usuario
+api.getUserInfo().then((user) => {
+  currentUser = user;
+  userInfo.setUserInfo({ name: user.name, job: user.about });
+  avatarNode.src = user.avatar;
+  // Crear las tarjetas iniciales
+  api.getInitialCards().then((cards) => {
+    console.log(cards);
+    cardList = new Section(
       {
-        handleCardClick: () => {
-          popupImageCard.open(inputValues.name, inputValues.link);
+        items: cards,
+        renderer: (cardItem) => {
+          const card = new Card(cardItem, "#card__template", currentUser, {
+            handleCardClick: (src, text) =>
+              popupImage.open({
+                link: src,
+                name: text,
+              }),
+            handleDeleteCard: (cardId, callback) => {
+              deleteForm.open(() => {
+                api.deleteCard(cardId).then(() => {
+                  callback();
+                });
+              });
+            },
+            handleAddLike: (cardId) => {
+              return api.addCardLike(cardId);
+            },
+
+            handleRemoveLike: (cardId) => {
+              return api.deleteCardLike(cardId);
+            },
+          });
+
+          const cardElement = card.createCard();
+
+          cardList.addItem(cardElement);
         },
-      }
+      },
+      cardContainer
     );
-    cardArea.prepend(card.generateCard());
-  }
-);
-const useInfo = new UserInfo(
-  ".profile-info__avatar_name",
-  ".profile-info__avatar_ocupation"
-);
-const popupProfile = new PopupWithForm("#ventana_modal", (inputValues) => {
-  profileName.textContent = inputValues.name;
-  profileAbout.textContent = inputValues.about;
-  popupProfile.close();
-});
-boton.addEventListener("click", () => {
-  popupProfile.open();
-  const userData = useInfo.getUserInfo();
-  inputName.textContent = userData.username;
-  inputAbout.textContents = userData.job;
-});
-btnAdd.addEventListener("click", () => {
-  popupAddButton.open();
+
+    // Renderizar tarjetas iniciales en el DOM
+    cardList.renderItems();
+  });
 });
 
-const formValidatorProfile = new FormValidator(formProfile);
-formValidatorProfile.enableValidation();
-const formValidatorAddCard = new FormValidator(formCards);
-formValidatorAddCard.enableValidation();
+// Popup de confirmación para eliminar las tarjeta
+const deleteForm = new PopupWithConfirmation({
+  popupSelector: popUpConfirmation,
+});
+deleteForm.setEventListeners();
 
-const sectionCards = new Section(
-  {
-    items: initialCards,
-    renderer: (element) => {
-      const newCard = cardGenerator(element.name, element.link);
-      sectionCards.addItem(newCard);
-    },
+// Popup imagen
+const popupImage = new PopupWithImage({
+  popupSelector: popUpImage,
+});
+popupImage.setEventListeners();
+
+// Agregar tarjetas
+const addCard = new PopupWithForm({
+  popupSelector: popUpCard,
+  handleFormSubmit: (formData) => {
+    return api.createCard(formData.link, formData.title).then((card) => {
+      const newCardInstance = new Card(card, "#card__template", currentUser, {
+        handleCardClick: (src, text) =>
+          popupImage.open({
+            link: src,
+            name: text,
+          }),
+        handleDeleteCard: (cardId, callback) => {
+          deleteForm.open(() => {
+            api.deleteCard(cardId).then(() => {
+              callback();
+            });
+          });
+        },
+        handleAddLike: (cardId) => {
+          return api.addCardLike(cardId);
+        },
+
+        handleRemoveLike: (cardId) => {
+          return api.deleteCardLike(cardId);
+        },
+      });
+
+      const newcardElement = newCardInstance.createCard();
+
+      cardContainer.prepend(newcardElement);
+    });
   },
-  ".elements"
-);
+});
+ButtonAddCard.addEventListener("click", () => {
+  enableValidation(formConfig);
+  addCard.open();
+});
+addCard.setEventListeners();
 
-sectionCards.renderer();
+// Editar perfil
+const editProfile = new PopupWithForm({
+  popupSelector: popUpProfile,
+  handleFormSubmit: (inputValues) => {
+    return api
+      .updateUserProfile(inputValues.name, inputValues.about)
+      .then((user) => {
+        userInfo.setUserInfo({ name: user.name, job: user.about });
+        //editProfile.close();
+      });
+  },
+});
+openButton.addEventListener("click", () => {
+  enableValidation(formConfig);
+  editProfile.open();
+  const userData = userInfo.getUserInfo();
+  nameInput.value = userData.name;
+  jobInput.value = userData.job;
+});
+editProfile.setEventListeners();
+
+// Actualizar foto de perfil
+const avatarForm = new PopupWithForm({
+  popupSelector: popUpAvatar,
+  handleFormSubmit: (inputValues) => {
+    return api
+      .updateAvatar(inputValues.link)
+      .then((user) => {
+        // Actualiza el DOM con la nueva imagen del avatar
+        document.querySelector(".profile__avatar").src = user.avatar;
+        //avatarForm.close();
+      })
+      .catch((err) => console.error(err));
+  },
+});
+
+avatarImage.addEventListener("click", () => {
+  // enableValidation(formConfig);
+  avatarForm.open();
+});
+
+avatarForm.setEventListeners();
+
+// Activa la validación en todos los formularios
+const enableValidation = (formConfig) => {
+  const forms = document.querySelectorAll(formConfig.formElement);
+  forms.forEach((formElement) => {
+    const formValidator = new FormValidator(formConfig, formElement);
+    formValidator.enableValidation();
+  });
+};
+
+// Habilitar la validación para los formularios
+enableValidation(formConfig);

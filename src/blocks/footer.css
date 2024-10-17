@@ -1,22 +1,23 @@
 .footer {
-  margin: 0;
-  padding-top: 79px;
-}
-.copyright {
-  margin: auto;
   max-width: 882px;
-}
-.copyright__footer_author {
-  margin: 0;
-  color: #545454;
-  padding-top: 67px;
+  margin: 0px auto;
+  padding: 67px 0 30px;
 }
 
-@media screen and (max-width: 890px) {
-  .copyright {
-    max-width: 280px;
+.footer__author {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #545454;
+}
+
+@media screen and (max-width: 968px) {
+  .footer {
+    max-width: 769px;
   }
-  .copyright__footer_author {
-    padding-top: 48px;
+
+  .footer__author {
+    padding-left: 50px;
   }
 }

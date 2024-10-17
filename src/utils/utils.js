@@ -1,39 +1,47 @@
-import Card from "../components/Card.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-export const modal = document.getElementById("ventana_modal");
-export const boton = document.getElementById("btn_open_modal"); //boton que abre el modal
-export const cerrar = document.getElementById("btn_close_modal"); //boton que cierra el modal
-export const modalImage = document.querySelector(".modalImage");
-export const modalAdd = document.querySelector("#ventana_modal-add");
-export const btnAdd = document.querySelector(".profile__button-add");
-export const btnClose = document.querySelector("#btn_close_modal-add");
-export const profileName = document.querySelector(".profile-info__avatar_name");
-export const profileAbout = document.querySelector(
-  ".profile-info__avatar_ocupation"
-);
-export const popupCard = document.querySelector(".modalImage");
-export const inputName = document.querySelector("#input_name");
-export const inputAbout = document.querySelector("#input_about");
-const popupImage = new PopupWithImage(".modalImage");
+//Contenedor de Tarjetas
+const cardContainer = document.querySelector(".elements");
 
-export function openImagePopup(name, link) {
-  const Image = document.querySelector(".modalImage");
-  const closeImage = document.querySelector(".modalImage__close");
-  const openImage = document.querySelector(".modalImage__open");
-  const titleImage = document.querySelector(".modalImage__description");
-  Image.style.display = "block";
-  openImage.src = link;
-  titleImage.textContent = name;
-  closeImage.addEventListener("click", function (evt) {
-    Image.style.display = "none";
-  });
-}
+// Formulario 'Editar Perfil'
+const popUpProfile = document.getElementById("popUp-Profile");
+export const openButton = document.querySelector(".profile__edit-button");
 
-export function cardGenerator(name, link) {
-  const card = new Card(name, link, ".template-card", {
-    handleCardClick: () => {
-      popupImage.open(name, link);
-    },
-  });
-  return card.generateCard();
-}
+//Pop Up Zoom Imagen
+const popUpImage = document.querySelector(".popup-image");
+const popUpImageContent = document.querySelector(".pop-up__image-zoom");
+const popUpImageTitle = document.querySelector(".pop-up__image-title");
+
+const formElement = document.querySelector(".pop-up__form");
+export const profileName = document.querySelector(".profile__info-name");
+export const profileJob = document.querySelector(".profile__info-paragraph");
+export const nameInput = formElement.querySelector(".pop-up__form-item-name");
+export const jobInput = formElement.querySelector(".pop-up__form-item-about");
+
+// Elementos del popUp card'
+const popUpCard = document.getElementById("popUp-Card");
+const formAddCard = document.getElementById("popUp-Form");
+const ButtonAddCard = document.querySelector(".profile__add-button");
+
+// Formulario 'Confirmación Borrar Card '
+export const popUpConfirmation = document.querySelector("#popUp-Delete");
+// Formulario 'Actualizar Avatar'
+export const popUpAvatar = document.getElementById("popUp-Avatar");
+export const avatarImage = document.querySelector(".profile__avatar_update");
+
+export const formConfig = {
+  formElement: ".pop-up__form",
+  inputElement: ".pop-up__form-item",
+  submitButton: ".pop-up__save-button",
+  errorNode: ".pop-up__form-error_",
+  errorClass: "pop-up__form-item_error",
+};
+
+export {
+  popUpImageContent,
+  popUpImageTitle,
+  popUpImage,
+  cardContainer,
+  formAddCard,
+  popUpCard,
+  ButtonAddCard,
+  popUpProfile,
+};

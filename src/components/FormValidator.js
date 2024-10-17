@@ -1,54 +1,78 @@
-export default class FormValidator {
-  constructor(formElement) {
+const formConfig = {
+  formElement: ".pop-up__form",
+  inputElement: ".pop-up__form-item",
+  submitButton: ".pop-up__save-button",
+  errorNode: ".pop-up__form-error_",
+  errorClass: "pop-up__form-item_error",
+};
+
+export class FormValidator {
+  constructor(formConfig, formElement) {
+    this._formConfig = formConfig;
     this._formElement = formElement;
+    this._inputElements = Array.from(
+      formElement.querySelectorAll(formConfig.inputElement)
+    );
+    this._submitButton = formElement.querySelector(formConfig.submitButton);
   }
 
-  enableValidation() {
-    this._setEventListener(this._formElement);
-  }
-  _setEventListener(formElements) {
-    const inputElement = Array.from(
-      formElements.querySelectorAll(".popup__info")
+  // Método privado para mostrar el error
+  _showInputError(inputElement, validationMessage) {
+    const errorNode = this._formElement.querySelector(
+      `${this._formConfig.errorNode}${inputElement.name}`
     );
-    const submitButton = formElements.querySelector("[type=submit]");
-    this._toggleSubmitButton(inputElement, submitButton);
-    inputElement.forEach((inputsElements) => {
-      inputsElements.addEventListener("input", (event) => {
-        if (!inputsElements.validity.valid) {
-          inputsElements.classList.add("form__input_type_error");
-          this._showErrorMessage(formElements, inputsElements);
-        } else {
-          inputsElements.classList.remove("form__input_type_error");
-          this._hideErrorMessage(formElements, inputsElements);
-        }
-        this._toggleSubmitButton(inputElement, submitButton);
+    inputElement.classList.add(this._formConfig.errorClass);
+    errorNode.textContent = validationMessage;
+  }
+
+  // Método privado para esconder el error
+  _hideInputError(inputElement) {
+    const errorNode = this._formElement.querySelector(
+      `${this._formConfig.errorNode}${inputElement.name}`
+    );
+    inputElement.classList.remove(this._formConfig.errorClass);
+    errorNode.textContent = "";
+  }
+
+  // Método privado para validar las entradas del usuario
+  _checkInputValidity(inputElement) {
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement, inputElement.validationMessage);
+    } else {
+      this._hideInputError(inputElement);
+    }
+  }
+
+  // Método privado para verificar si hay entradas inválidas
+  _hasInvalidInput() {
+    return this._inputElements.some((inputElement) => {
+      return !inputElement.validity.valid;
+    });
+  }
+
+  // Método privado para habilitar/deshabilitar el botón de envío
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputElements)) {
+      this._submitButton.disabled = true;
+    } else {
+      this._submitButton.disabled = false;
+    }
+  }
+
+  // Método privado para agregar event listeners a las entradas del formulario
+  _setEventListeners() {
+    this._toggleButtonState();
+
+    this._inputElements.forEach((inputElement) => {
+      inputElement.addEventListener("input", (event) => {
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState();
       });
     });
   }
-  _showErrorMessage(formElements, inputsElements) {
-    const errorNode = formElements.querySelector(
-      `.popup__error_${inputsElements.name}`
-    );
 
-    errorNode.textContent = inputsElements.validationMessage;
-  }
-  _hideErrorMessage(formElements, inputsElements) {
-    const errorNode = formElements.querySelector(
-      `.popup__error_${inputsElements.name}`
-    );
-    errorNode.textContent = "";
-  }
-  _toggleSubmitButton(inputElement, submitButton) {
-    const state = this._isFormValid(inputElement);
-    if (!state) {
-      submitButton.disabled = true;
-    } else {
-      submitButton.disabled = false;
-    }
-  }
-  _isFormValid(inputElement) {
-    return inputElement.every((item) => {
-      return item.validity.valid;
-    });
+  // Método público para activar la validación del formulario
+  enableValidation() {
+    this._setEventListeners();
   }
 }

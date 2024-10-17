@@ -1,39 +1,35 @@
 export default class Popup {
-  constructor(popupSelector) {
-    this._popupElement = document.querySelector(popupSelector);
-    this._handleEscCloseAux = this._handleEscClose.bind(this);
-    this.setEventListeners();
+  constructor({ popupSelector }) {
+    this._popUp = popupSelector;
+    this._handleEscClose = this._handleEscClose.bind(this);
+    this._closeButton = this._popUp.querySelector(".pop-up__close-button");
   }
-  open() {
-    this._popupElement.style.display = "block";
-    window.addEventListener("keydown", this._handleEscCloseAux);
-  }
-  close() {
-    this._popupElement.style.display = "none";
-    window.removeEventListener("keydown", this._handleEscCloseAux);
-  }
-  _handleEscClose(evt) {
-    //Cerrar modal con tecla ESC
 
-    const esc = evt.keyCode || evt.which;
-    if (esc == 27) {
+  open() {
+    this._popUp.classList.add("pop-up_opened");
+    document.addEventListener("keydown", this._handleEscClose);
+  }
+
+  close() {
+    this._popUp.classList.remove("pop-up_opened");
+    document.removeEventListener("keydown", this._handleEscClose);
+  }
+
+  _handleEscClose = (evt) => {
+    if (evt.key === "Escape") {
       this.close();
     }
-  }
+  };
+
   setEventListeners() {
-    //Cerrar el modal en superposicion
+    // Listener para el botón de cierre
+    this._closeButton.addEventListener("click", () => {
+      this.close();
+    });
 
-    this._popupElement
-      .querySelector(".popup__close, .popup__close-add, .modalImage__close")
-      .addEventListener("click", () => {
-        this.close();
-      });
-
-    this._popupElement.addEventListener("click", (e) => {
-      if (
-        e.target == this._popupElement ||
-        e.target.classList.contains("modalImage__content")
-      ) {
+    // Listener para cerrar el popup haciendo clic fuera del contenido
+    this._popUp.addEventListener("click", (evt) => {
+      if (evt.target.classList.contains("pop-up")) {
         this.close();
       }
     });
